@@ -5,9 +5,11 @@ pipeline {
             string(name: 'Username', defaultValue: 'Ross', description: 'How should I greet the world?')
         }
     stages {    
-        stage('Example') {
+        stage('Build') {
             steps {
                 echo "Hello ${params.Greeting}, we are building..."
+                mvn clean install assembly:single
+                echo "Success"
             }
         }
         stage('Test') {
