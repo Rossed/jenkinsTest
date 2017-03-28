@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Hello ${params.Greeting}, we are building..."
-                mvn clean install assembly:single
+                sh 'mvn clean install assembly:single'
                 echo "Success"
             }
         }
