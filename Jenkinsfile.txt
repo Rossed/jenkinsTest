@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 def username = "Ross"
-                echo “hello ${username}, we are building”
+                echo “hello ${username} we are building”
             }
         }
         stage('Test') {
