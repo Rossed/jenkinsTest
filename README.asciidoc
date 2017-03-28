@@ -1,0 +1,57 @@
+walkmod-override-plugin
+=======================
+Raquel Pau <raquelpau@gmail.com>
+
+This is a walkmod plugin to add the override annotation in Java methods whenever it is necessary 
+(when a given class implements an interface or defines a method that belongs to its superclass). 
+
+== Example
+Let's see an example. From this code, which is a class with its typical `toString` implementation. 
+
+```java
+package example;
+
+public class Foo{
+ 
+  public String toString(){
+    ...
+  }
+}
+```
+
+It is transformed to :
+```java
+package example;
+
+public class Foo{
+
+  @Override
+  public String toString(){
+    ...
+  }
+}
+```
+
+== Usage
+
+
+=== Only Walkmod >= 2.2.0
+
+Just type:
+
+----
+walkmod add override
+----
+and then, to see the results:
+
+----
+walkmod apply
+----
+
+== Contributing
+
+If you want to hack on this, fork it, improve it and send me a pull request.
+
+To get started using it, just clone it and call mvn install. 
+
+
