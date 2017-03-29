@@ -14,16 +14,14 @@ pipeline {
         }
         stage('Test') {
             steps {
-                parallel linux: {
-                    node('linux') {
-                        echo 'test 1 running'
+                parallel (
+                    'P1': {
+                        echo 'P1'
+                    },
+                    'P2': {
+                        echo 'P2'
                     }
-                },
-                windows: {
-                    node('windows') {
-                        echo 'test 2 running'
-                    }
-                }
+                )
             }
         }
 
