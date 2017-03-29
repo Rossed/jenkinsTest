@@ -13,17 +13,20 @@ pipeline {
             }
         }
         stage('Test') {
-            parallel linux: {
-                node('linux') {
-                    echo 'test 1 running'
-                }
-            },
-            windows: {
-                node('windows') {
-                    echo 'test 2 running'
+            steps {
+                parallel linux: {
+                    node('linux') {
+                        echo 'test 1 running'
+                    }
+                },
+                windows: {
+                    node('windows') {
+                        echo 'test 2 running'
+                    }
                 }
             }
         }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
