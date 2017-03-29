@@ -15,11 +15,11 @@ pipeline {
         stage('Test') {
             steps {
                 parallel (
-                    'P1': {
-                        echo 'P1'
+                    'test 1': {
+                        echo 'running test 1'
                     },
-                    'P2': {
-                        echo 'P2'
+                    'test 2': {
+                        echo 'running test 2'
                     }
                 )
             }
