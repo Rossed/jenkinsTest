@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-            string(name: 'Username', defaultValue: 'Ross', description: 'How should I greet the world?')
+            string(name: 'Username', defaultValue: 'Ross', description: 'Who is running the build')
         }
     stages {    
         stage('Build') {
@@ -13,8 +13,13 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-                echo 'Testing..'
+            parallel test1:
+            node('test1') {
+                echo 'test1 is running...'
+            }, 
+            test2:
+            node('test2') {
+                echo 'test 2 is running'
             }
         }
         stage('Deploy') {
