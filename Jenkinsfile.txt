@@ -8,8 +8,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Hello ${params.Username}, we are building..."
-                sh 'mvn clean install assembly:single'
+                'mvn clean install assembly:single'
                 echo "Build Success"
+            }
+            post {
+                failure {
+                mail to: ross.edwards@hotmail.com.au, subject: 'The Pipeline failed :('
+                }
             }
         }
         stage('Test') {
