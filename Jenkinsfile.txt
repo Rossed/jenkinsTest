@@ -8,12 +8,12 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Hello ${params.Username}, we are building..."
-                'mvn clean install assembly:single'
+                sh 'mvn clean install assembly:single'
                 echo "Build Success"
             }
             post {
                 failure {
-                    echo 'FAILURE....'
+                    echo 'FAILURE IN. BUILD'
                 }
             }
         }
