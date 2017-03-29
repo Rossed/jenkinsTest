@@ -13,14 +13,16 @@ pipeline {
             }
         }
         stage('Test') {
-            parallel test1:
-            node('test1') {
-                echo 'test1 is running...'
-            }, 
-            test2:
-            node('test2') {
-                echo 'test 2 is running'
-            }
+            parallel test1: {
+                    node('test1') {
+                        echo 'test1 is running...'
+                    }   
+                }, 
+                test2: {
+                    node('test2') {
+                        echo 'test 2 is running'
+                    }
+                }
         }
         stage('Deploy') {
             steps {
